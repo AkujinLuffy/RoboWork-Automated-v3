@@ -1,0 +1,19 @@
+; AutoIt Script to Unlink Events in Legazy_Monitoring
+
+; Include required libraries
+#include <MsgBoxConstants.au3>
+
+; Start Legazy_Monitoring.exe
+Run("C:\Path\To\Legazy_Monitoring.exe") ; Change path as necessary
+WinWaitActive("Legazy_Monitoring") ; Wait for the window to be active
+
+; Click filter button (example coordinates)
+MouseClick("left", 200, 150) ; Adjust coordinates to your filter button
+Sleep(500) ; Small delay
+
+; Gather ticket IDs from the clipboard (ensure they're already formatted in Excel)
+Send("^v") ; Paste formatted Ticket IDs (ensure you copied the string)
+Sleep(500) ; Small delay
+
+; Click Ok button (example coordinates)
+MouseClick("left", 250, 200) ; Adjust to the actual "Ok" button position
