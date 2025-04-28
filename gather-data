@@ -1,0 +1,30 @@
+Sub PrepareData()
+    Dim ws As Worksheet
+    Dim lastRow As Long
+    Dim i As Long
+    Dim ticketIDs As String
+    Dim count As Long
+
+    ' Set the worksheet
+    Set ws = ThisWorkbook.Sheets("Sheet1") ' Change to the actual sheet name if needed
+    lastRow = ws.Cells(ws.Rows.Count, "A").End(xlUp).Row  ' Find the last row in column A
+
+    ' Initialize ticketIDs string
+    ticketIDs = ""
+
+    ' Loop through rows to gather Ticket IDs matching Legazy_Monitoring
+    For i = 2 To lastRow  ' Assuming the first row has headers
+        If ws.Cells(i, 2).Value = "Legazy_Monitoring" Then
+            If count > 0 Then
+                ticketIDs = ticketIDs & "|"
+            End If
+            ticketIDs = ticketIDs & "*" & ws.Cells(i, 1).Value & "*"
+            count = count + 1
+        End If
+    Next i
+
+    ' Output ticket IDs string for UI automation
+    MsgBox "Formatted Ticket IDs: " & ticketIDs
+    ' You can also save this value somewhere in your sheet if needed
+    ws.Cells(1, 6).Value = ticketIDs  ' Example: write formatted string in column F
+End Sub
