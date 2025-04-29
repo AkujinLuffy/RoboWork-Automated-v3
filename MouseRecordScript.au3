@@ -36,6 +36,8 @@ Func PrepareAutoGUIrobo()
     EndIf
 EndFunc
 
+;###### TO DO: dev the code for the extra settings that will be written to G1 
+
 ; Function to clean the RECORD section in G1
 Func CleanRecordSection()
     Local $fileContent = FileRead($logFile)
@@ -53,6 +55,8 @@ Func CleanRecordSection()
         MsgBox($MB_OK, "Record Section Cleaned", "The RECORD section in G1 has been cleared.")
     EndIf
 EndFunc
+
+;### Fix the comment to pop up with hotkey
 
 ; Function to start recording actions
 Func StartRecording($promptForComment = False)
